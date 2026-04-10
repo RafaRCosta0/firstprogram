@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Tela de Carregamento</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background-image: url("assets/image2.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    .loading-container {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+    }
+
+    .titulo {
+      font-family: 'Luckiest Guy', cursive;
+      font-size: 59px;
+      color: #FFD93B;
+      -webkit-text-stroke: 3px #1E4DB7;
+      margin-bottom: 20px;
+      animation: bounce 1.2s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    .loading-bar {
+      position: relative;
+      width: 400px;
+      height: 30px;
+      border: 3px solid #071e53;
+      border-radius: 20px;
+      background: #000;
+      overflow: visible;
+      margin: 0 auto;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #09ff00, #67ff2b);
+      border-radius: 20px;
+      transition: width 0.1s ease;
+    }
+
+    .percent {
+      margin-top: 15px;
+      font-size: 20px;
+      color: #ffffff;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    }
+
+.img1{
+  position: fixed;
+  top: 380px;
+  right: -500px;
+  width: 600px;
+  height: auto;
+  animation: float 3s ease-in-out infinite;
+}
+
+.img2{
+  position: fixed;
+  top: 5px;
+  right: 550px;
+  width: 600px;
+}
+
+    #pet {
+      position: absolute;
+      top: -60px;
+      left: 0%;
+      width: 90px;
+      height: auto;
+
+      transform: translateX(-50%);
+      pointer-events: none;
+      transition: left 0.3s ease;
+    }
+
+    .img3{
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: auto;
+
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+}
+    
+  </style>
+</head>
+<body>
+<img src="assets/selo.png" class="img1">
+<img src="assets/bola2.png" class="img2">
+<img src="assets/titulo.png" class="img3">
+  <div class="loading-container">
+   
+
+    <div class="loading-bar">
+      <div class="progress" id="progress"></div>
+      <img id="pet" src="https://media.tenor.com/SH31iAEWLT8AAAAi/pikachu-running.gif" alt="poke">
+  
+    </div>
+
+    <div class="percent" id="percent">0%</div>
+  </div>
+
+  <script>
+    let progress = 0;
+    const bar = document.getElementById("progress");
+    const percent = document.getElementById("percent");
+    const titulo = document.querySelector(".titulo");
+    const pet = document.getElementById("pet");
+
+    const interval = setInterval(() => {
+      progress += Math.floor(Math.random() * 10) + 1;
+
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+
+      setTimeout(() => {
+          window.location.href = "pokedex.html";
+      }, 1000);
+      }
+
+      bar.style.width = progress + "%";
+      percent.innerText = progress + "%";
+      pet.style.left = progress + "%";
+    }, 400);
+  </script>
+
+</body>
+</html>

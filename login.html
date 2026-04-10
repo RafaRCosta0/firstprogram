@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+
+body{
+      margin:-1px;
+      height:100vh;
+      background-image: url("image2.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+      position: relative;
+      font-family:Arial, sans-serif;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .login-box{
+  width: 320px;
+  padding: 20px;
+  border-radius: 50px;
+
+  background: radial-gradient(
+  ellipse at center,
+  rgba(255,255,255,0.6) 0%,
+  rgba(255,255,255,0.2) 40%,
+  rgba(255,255,255,0) 70%
+);
+  opacity: 0.9; /* Opacidade da caixa de login bolha */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    inset 0 -8px 18px rgba(255, 255, 255, 0.08);
+
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.login-box::before{
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 120px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+    input{
+      width:80%;
+      margin:8px 0;
+      padding:7px;
+      border:none;
+      border-radius:100px;
+      background: rgb(39, 39, 233); /* cor do fundo */
+      
+    }
+
+    button{
+      width:100%;
+      padding:10px;
+      border:none;
+      border-radius:100px;
+      background:#1500ff;
+      color:rgb(255, 251, 0);
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .titulo-pokemon{
+  transform: rotate(-5deg);
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 45px;
+  color: #FFD93B;
+
+  -webkit-text-stroke: 1px #2A75BB;
+
+  text-shadow:
+    4px 2px 0 #1500ff,
+    4px 4px 0 #043f8b;
+    
+    
+}
+
+.login-texto{
+  transform: rotate(-5deg);
+  font-family: 'Luckiest Guy', cursive; /* mesma do título */
+  font-size: 28px;
+  position: relative;
+  top: 190px;  /* sobe */
+  left: -115px;   /* move lateral */
+  color: #FFD93B;
+  text-align: center;
+
+  -webkit-text-stroke: 1px #000cf4;
+
+  text-shadow:
+    1px 2px 0 #000cf4,
+    1px 4px 0 #000cf4;
+
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <p class="login-texto">Login</p>
+    <div class="texto-container">
+  <h1 class="titulo-pokemon">Hey Treinador Informe ↓</h1>
+</div>
+    <input type="text" placeholder="Usuário">
+    <input type="password" placeholder="Senha">
+    <button>Entrar</button>
+  </div>
+</body>
+</html>
