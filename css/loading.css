@@ -75,10 +75,19 @@ body {
 
 .img3 {
   position: absolute;
-  top: 50px;
+  top: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 400px;
+  width: 820px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.img2 {
+  position: absolute;
+  top: -10px;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 700px;
   animation: float 3s ease-in-out infinite;
 }
 
@@ -101,7 +110,7 @@ body {
   }
 
   .img3 {
-    width: 250px;
+    width: 300px;
   }
 
   #pet {
