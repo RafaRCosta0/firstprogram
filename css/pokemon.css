@@ -42,16 +42,16 @@ body{
 /* POKEMON (encaixado na tela cinza) */
 .pokemon-img{
   position: absolute;
-  top: 270px;
-  left: 395px;
+  top: 490px;
+  left: 645px;
   width: 150px;
 }
 
 /* NOME (embaixo da tela) */
 .nome{
   position: absolute;
-  top: 420px;
-  left: 347px;
+  top: 670px;
+  left: 607px;
   width: 260px;
   text-align: center;
   font-size: 26px;
@@ -65,8 +65,8 @@ body{
 /* INFOS (dentro da tela azul) */
 .info-box{
   position: absolute;
-  top: 255px;
-  left: 700px;
+  top: 450px;
+  left: 1090px;
   width: 150px;
   color: rgb(15, 3, 57);
   font-size: 19px;
@@ -84,9 +84,9 @@ body{
 
 .gif-bg{
   position: absolute;
-  top: 257px;
-  left: 663px;
-  width: 240px;
+  top: 407px;
+  left: 1020px;
+  width: 340px;
   z-index: 0;
   opacity: 40%;
 }
