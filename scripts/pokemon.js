@@ -18,8 +18,9 @@ async function carregarPokemon(){
     const pokemon = await resposta.json();
 
     pokemonDetail.innerHTML = `
+    <button class="favorito-detalhe">⭐ <br> Favoritar</button>
       <img class="pokemon-img"
-        src="${pokemon.sprites.other["official-artwork"].front_default || pokemon.sprites.front_default}"
+        src="${pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default}"
       >
 
       <div class="nome">${capitalize(pokemon.name)}</div>
@@ -38,3 +39,4 @@ async function carregarPokemon(){
 }
 
 carregarPokemon();
+

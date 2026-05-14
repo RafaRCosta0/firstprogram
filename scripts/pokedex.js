@@ -21,7 +21,7 @@ searchFilterBtn.addEventListener("click", toggleFilters);
 async function getPokemons() {
     const promises = [];
 /* busca os 60 pokemons */
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 100; i++) {
         promises.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(res => res.json()));
     }
 
@@ -33,7 +33,7 @@ async function getPokemons() {
             return {
                 id: pokemon.id,
                 name: pokemon.name,
-                image: pokemon.sprites.other["official-artwork"].front_default || pokemon.sprites.front_default,
+                image: pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default,
                 types: pokemon.types.map(t => t.type.name),
                 weaknesses: weaknesses
             };
@@ -72,6 +72,7 @@ function renderPokemons(pokemons) {
         card.classList.add(mainType);
 
         card.innerHTML = `
+            <button class="favoritar">⭐</button>
             <span>#${pokemon.id}</span>
             <img src="${pokemon.image}" alt="${pokemon.name}">
             <h2>${capitalize(pokemon.name)}</h2>
@@ -122,3 +123,28 @@ clearFiltersBtn.addEventListener("click", () => {
 
 /* iniciar */
 getPokemons();
+
+const musica = document.getElementById("musicaFundo");
+const btnSom = document.getElementById("btnSom");
+const musicaSalva = localStorage.getItem("musica");
+
+if (musicaSalva === "on") {
+  musica.play();
+  btnSom.textContent = "🔊";
+} else {
+  btnSom.textContent = "🔇";
+}
+
+btnSom.addEventListener("click", () => {
+  if (musica.paused) {
+    musica.play();
+    localStorage.setItem("musica", "on");
+    btnSom.textContent = "🔊";
+
+  } else {
+    musica.pause();
+    localStorage.setItem("musica", "off");
+    btnSom.textContent = "🔇";
+  }
+
+});

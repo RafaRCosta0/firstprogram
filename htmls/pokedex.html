@@ -11,7 +11,11 @@
 
         <header class="pokedex-header">
             <div class="top-bar">
-                <button class="filter-toggle" id="filterToggle" aria-label="Abrir filtros"></button>
+
+                <div>
+                <button class="filter-toggle" id="filterToggle" aria-label="Abrir filtros">⭐</button>
+                <h2 class="text-favoritos">Favoritos</h2>
+                </div>
 
                 <div class="bolinhas">
                     <span class="b1"></span>
@@ -24,6 +28,11 @@
                     <button class="search-filter-btn" id="searchFilterBtn">
                         <img src="../assets/filtro.png" class="icon-filter">
                     </button> 
+        <audio id="musicaFundo" src="../assets/musicteste.mp3" loop></audio>
+
+            <button id="btnSom">
+                🔇
+            </button>
             </div>
 
             <div class="filter-panel hidden" id="filterPanel">
@@ -77,11 +86,15 @@
                     <button id="clearFilters">Limpar filtros</button>
                 </div>
             </div>
+            
+
         </header>
 
         <section class="pokemon-grid" id="pokemonGrid"></section>
 
     </main>
+
+   
 
     <script src="../scripts/pokedex.js"></script>
 </body>
