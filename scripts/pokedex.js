@@ -6,6 +6,7 @@ const typeFilter = document.getElementById("typeFilter");
 const weaknessFilter = document.getElementById("weaknessFilter");
 const clearFiltersBtn = document.getElementById("clearFilters");
 const searchFilterBtn = document.getElementById("searchFilterBtn");
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) ||[];
 
 let allPokemons = [];
 
@@ -21,7 +22,7 @@ searchFilterBtn.addEventListener("click", toggleFilters);
 async function getPokemons() {
     const promises = [];
 /* busca os 60 pokemons */
-    for (let i = 1; i <= 100; i++) {
+    for (let i = 1; i <= 50; i++) {
         promises.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(res => res.json()));
     }
 
@@ -60,23 +61,53 @@ async function getPokemonWeaknesses(types) {
     return [...weaknessSet];
 }
 
+
+
 /* renderiza os cards */
 function renderPokemons(pokemons) {
     pokemonGrid.innerHTML = "";
 
     pokemons.forEach(pokemon => {
         const card = document.createElement("article");
+        const favorito = favoritos.includes(pokemon.id);
         card.classList.add("pokemon-card");
 
         const mainType = pokemon.types[0];
         card.classList.add(mainType);
 
         card.innerHTML = `
-            <button class="favoritar">⭐</button>
+            <button class="favorito">
+            ${favorito ? "⭐" : "☆"}
+            </button>
+
             <span>#${pokemon.id}</span>
             <img src="${pokemon.image}" alt="${pokemon.name}">
             <h2>${capitalize(pokemon.name)}</h2>
         `;
+
+        const btnFavorito = card.querySelector(".favorito");
+
+btnFavorito.addEventListener("click", (e) => {
+
+    e.stopPropagation();
+
+    if (favoritos.includes(pokemon.id)) {
+
+        favoritos = favoritos.filter(id => id !== pokemon.id);
+
+    } else {
+
+        favoritos.push(pokemon.id);
+
+    }
+
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    btnFavorito.textContent =
+        favoritos.includes(pokemon.id) ? "⭐" : "☆";
+
+});
+
         card.addEventListener("click", () => {
             abrirPokemon(pokemon.name);
         });
@@ -84,6 +115,9 @@ function renderPokemons(pokemons) {
         pokemonGrid.appendChild(card);
     });
 }
+
+
+
 
 function abrirPokemon(nome) {
     window.location.href = `pokemon.html?nome=${nome}`;
