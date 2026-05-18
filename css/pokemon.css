@@ -23,8 +23,7 @@ body{
 
 /* CONTAINER PRINCIPAL */
 .pokedex{
-  position: relative;
-
+  position: absolute;
   width: 100%;
   max-width: 1300px;
 }
@@ -93,7 +92,7 @@ body{
 .info-box{
   position: absolute;
   top: 40%;
-  left: 58%;
+  left: 56%;
   color: rgb(15, 3, 57);
   font-size: 1.4vw;
   line-height: 2;
@@ -146,11 +145,11 @@ body{
 
 .favorito-detalhe {
   position: absolute;
-  top: 26%;
+  top: 23%;
   right: 51%;
   border: none;
   background: transparent;
-  font-size: 12px;
+  font-size: 70%;
   cursor: pointer;
   transition: 0.3s;
   text-align: center;
@@ -158,6 +157,86 @@ body{
 }
 
 .favorito-detalhe:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
   color: gold;
+}
+
+
+.megaEvolução {
+  width: 4%;
+  height: 8%;
+  border-radius: 50%;
+  border: 3px solid black;
+  background: #00b4d8;
+  cursor: pointer;
+  position: absolute;
+  left: 26.5%;
+  top: 17.1%;
+  transition: 0.4s;
+ }
+
+
+
+.megaEvolução:hover {
+  background: #00b4d8;
+  transform: scale(1.1);
+ }
+
+
+.evolução1 {
+  position: absolute;
+  top: 15.9%;
+  left: 32.2%;
+  width: 2.2%;
+  height: 4%;
+  border-radius: 50%;
+  border: 3px solid black;
+  background: #d80032;
+  cursor: pointer;
+  transition: 0.4s;
+ }
+
+
+.evolução1:hover {
+  background: #d80032;
+  transform: scale(1.1);
+}
+
+.evolução2 {
+  position: absolute;
+  top: 15.9%;
+  left: 35.3%;
+  width: 2.2%;
+  height: 4%;
+  border-radius: 50%;
+  border: 3px solid black;
+  background: yellow;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+
+.evolução2:hover {
+  background: yellow;
+  transform: scale(1.1);
+}
+
+
+.evolução3 {
+  position: absolute;
+  top: 15.9%;
+  left: 38.3%;
+  width: 2.1%;
+  height: 4%;
+  border-radius: 50%;
+  border: 3px solid black;
+  background: #29bf12;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+
+.evolução3:hover {
+  background: #29bf12;
+  transform: scale(1.1);
 }

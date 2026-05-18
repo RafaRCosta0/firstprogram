@@ -1,5 +1,7 @@
 const pokemonDetail = document.getElementById("pokemonDetail");
 
+let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
 function capitalize(text){
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
@@ -17,8 +19,13 @@ async function carregarPokemon(){
     const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
     const pokemon = await resposta.json();
 
+    const favorito = favoritos.includes(pokemon.id);
+
     pokemonDetail.innerHTML = `
-    <button class="favorito-detalhe">⭐ <br> Favoritar</button>
+    <button class="favorito-detalhe">
+      ${favorito ? "⭐" : "☆"} <br> Favoritar
+    </button>
+
       <img class="pokemon-img"
         src="${pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default}"
       >
@@ -33,10 +40,26 @@ async function carregarPokemon(){
         <p><strong>Força:</strong> ${pokemon.stats[1].base_stat}</p>
       </div>
     `;
+
+    const btnFavorito = document.querySelector(".favorito-detalhe");
+
+    btnFavorito.addEventListener("click", () => {
+      if (favoritos.includes(pokemon.id)) {
+        favoritos = favoritos.filter(id => id !== pokemon.id);
+      } else {
+        favoritos.push(pokemon.id);
+      }
+
+      localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+      btnFavorito.innerHTML = `
+        ${favoritos.includes(pokemon.id) ? "⭐" : "☆"} <br> Favoritar
+      `;
+    });
+
   }catch(e){
     pokemonDetail.innerHTML = "<p class='loading'>Erro ao carregar</p>";
   }
 }
 
 carregarPokemon();
-

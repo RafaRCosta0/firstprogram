@@ -3,10 +3,10 @@ const searchInput = document.getElementById("searchPokemon");
 const filterToggle = document.getElementById("filterToggle");
 const filterPanel = document.getElementById("filterPanel");
 const typeFilter = document.getElementById("typeFilter");
-const weaknessFilter = document.getElementById("weaknessFilter");
 const clearFiltersBtn = document.getElementById("clearFilters");
 const searchFilterBtn = document.getElementById("searchFilterBtn");
 let favoritos = JSON.parse(localStorage.getItem("favoritos")) ||[];
+let mostrandoFavoritos = false;
 
 let allPokemons = [];
 
@@ -15,7 +15,21 @@ function toggleFilters() {
     filterPanel.classList.toggle("hidden");
 }
 
-filterToggle.addEventListener("click", toggleFilters);
+filterToggle.addEventListener("click", () => {
+    mostrandoFavoritos = !mostrandoFavoritos;
+
+    if (mostrandoFavoritos) {
+        const pokemonsFavoritos = allPokemons.filter(pokemon =>
+            favoritos.includes(pokemon.id)
+        );
+
+        renderPokemons(pokemonsFavoritos);
+    } else {
+        renderPokemons(allPokemons);
+    }
+});
+
+
 searchFilterBtn.addEventListener("click", toggleFilters);
 
 /* buscar na API de pokémons */
@@ -126,14 +140,13 @@ function abrirPokemon(nome) {
 function applyFilters() {
     const searchValue = searchInput.value.toLowerCase().trim();
     const selectedType = typeFilter.value;
-    const selectedWeakness = weaknessFilter.value;
+    
 
     const filtered = allPokemons.filter(pokemon => {
         const matchesName = pokemon.name.toLowerCase().includes(searchValue);
         const matchesType = !selectedType || pokemon.types.includes(selectedType);
-        const matchesWeakness = !selectedWeakness || pokemon.weaknesses.includes(selectedWeakness);
-
-        return matchesName && matchesType && matchesWeakness;
+        
+        return matchesName && matchesType;
     });
 
     renderPokemons(filtered);
@@ -146,12 +159,11 @@ function capitalize(text) {
 /* eventos */
 searchInput.addEventListener("input", applyFilters);
 typeFilter.addEventListener("change", applyFilters);
-weaknessFilter.addEventListener("change", applyFilters);
+
 
 clearFiltersBtn.addEventListener("click", () => {
     searchInput.value = "";
     typeFilter.value = "";
-    weaknessFilter.value = "";
     renderPokemons(allPokemons);
 });
 
