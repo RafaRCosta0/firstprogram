@@ -7,7 +7,9 @@ const clearFiltersBtn = document.getElementById("clearFilters");
 const searchFilterBtn = document.getElementById("searchFilterBtn");
 let favoritos = JSON.parse(localStorage.getItem("favoritos")) ||[];
 let mostrandoFavoritos = false;
-
+let offset = 1;
+const limit = 20;
+const loadMoreBtn = document.getElementById("loadMoreBtn");
 let allPokemons = [];
 
 /* abrir e fechar painel */
@@ -34,10 +36,14 @@ searchFilterBtn.addEventListener("click", toggleFilters);
 
 /* buscar na API de pokémons */
 async function getPokemons() {
+
     const promises = [];
-/* busca os 60 pokemons */
-    for (let i = 1; i <= 50; i++) {
-        promises.push(fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(res => res.json()));
+
+    for (let i = offset; i < offset + limit; i++) {
+        promises.push(
+            fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+            .then(res => res.json())
+        );
     }
 
     const pokemons = await Promise.all(promises);
@@ -45,20 +51,23 @@ async function getPokemons() {
     const enrichedPokemons = await Promise.all(
         pokemons.map(async (pokemon) => {
             const weaknesses = await getPokemonWeaknesses(pokemon.types);
+
             return {
                 id: pokemon.id,
                 name: pokemon.name,
                 image: pokemon.sprites.versions["generation-v"]["black-white"].animated.front_default,
                 types: pokemon.types.map(t => t.type.name),
-                weaknesses: weaknesses
+                weaknesses
             };
         })
     );
 
-    allPokemons = enrichedPokemons;
-    renderPokemons(allPokemons);
-}
+    allPokemons.push(...enrichedPokemons);
 
+    renderPokemons(allPokemons);
+
+    offset += limit;
+}
 /* buscar fraquezas com base nos tipos */
 async function getPokemonWeaknesses(types) {
     const weaknessSet = new Set();
@@ -130,6 +139,9 @@ btnFavorito.addEventListener("click", (e) => {
     });
 }
 
+loadMoreBtn.addEventListener("click", () => {
+    getPokemons();
+});
 
 
 

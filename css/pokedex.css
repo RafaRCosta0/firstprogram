@@ -336,18 +336,24 @@ body {
 }
 
 #btnSom {
-  width: 0px;
-  height: 0px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
   border: none;
-  background: transparent;
-  font-size: 21px;
+  background: black;
+  border-radius: 50%;
+  font-size: 22px;
   cursor: pointer;
-  z-index: 9999;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  margin-left: 40%;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#btnSom:hover {
+  background: #333;
 }
 
 .Rodapé {
@@ -375,4 +381,21 @@ body {
 .redes i:hover {
   transform: scale(1.2);
   color: #ffdd00;
+}
+
+#loadMoreBtn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff1d1d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#loadMoreBtn:hover {
+    background-color: #b30000;
 }
