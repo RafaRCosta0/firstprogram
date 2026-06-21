@@ -233,6 +233,8 @@ body{
   background: #29bf12;
   cursor: pointer;
   transition: 0.4s;
+  font-weight: bold;
+  font-size: 0.7vw;
 }
 
 
