@@ -148,7 +148,7 @@ loadMoreBtn.addEventListener("click", () => {
 function abrirPokemon(nome) {
     window.location.href = `pokemon.html?nome=${nome}`;
 }
-/* filtro geral */
+/* Rafael \filtro geral */
 function applyFilters() {
     const searchValue = searchInput.value.toLowerCase().trim();
     const selectedType = typeFilter.value;
@@ -163,6 +163,7 @@ function applyFilters() {
 
     renderPokemons(filtered);
 }
+/* Rafael */
 
 function capitalize(text) {
     return text.charAt(0).toUpperCase() + text.slice(1);
