@@ -262,3 +262,20 @@ body{
 .notificacao.show {
     right: 20px;
 }
+
+#btnVoltar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background: red;
+    color: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#btnVoltar:hover {
+    background: darkred;
+}

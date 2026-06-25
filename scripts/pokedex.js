@@ -146,7 +146,7 @@ loadMoreBtn.addEventListener("click", () => {
 
 
 function abrirPokemon(nome) {
-    window.location.href = `pokemon.html?nome=${nome}`;
+    window.open(`pokemon.html?nome=${nome}`, "_blank");
 }
 /* Rafael \filtro geral */
 function applyFilters() {

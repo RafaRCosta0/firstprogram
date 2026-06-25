@@ -255,3 +255,7 @@ window.addEventListener("load", () => {
         notification.classList.remove("show");
     }, 1000000);
 });
+
+document.getElementById("btnVoltar").addEventListener("click", () => {
+    window.location.href = "pokedex.html";
+});
