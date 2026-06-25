@@ -235,3 +235,13 @@ btnForma2.addEventListener("click", () => {
 }
 
 carregarPokemon();
+
+window.addEventListener("load", () => {
+    const notification = document.getElementById("notificacao");
+
+    notification.classList.add("show");
+
+    setTimeout(() => {
+        notification.classList.remove("show");
+    }, 1000000);
+});

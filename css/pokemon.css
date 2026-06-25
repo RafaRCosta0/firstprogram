@@ -242,3 +242,23 @@ body{
   background: #29bf12;
   transform: scale(1.1);
 }
+
+
+.notificacao {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 220px;
+    max-width: 80vw;
+    padding: 10px;
+    background: #f4e4bc;
+    border: 3px solid #8b6b3f;
+    border-radius: 10px;
+    font-size: 12px;
+    font-family: serif;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
+.notificacao.show {
+    right: 20px;
+}
