@@ -1,7 +1,7 @@
 const pokemonDetail = document.getElementById("pokemonDetail");
 
 let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
-
+/* declaracao das mega evoluções*/
 const megaForms = {
   venusaur: ["venusaur-mega"],
   charizard: [
@@ -48,15 +48,25 @@ const megaForms = {
   latias: ["latias-mega"],
   latios: ["latios-mega"],
   rayquaza: ["rayquaza-mega"],
-  kyogre: ["kyogre-primal"],
-  groudon: ["groudon-primal"],
   lopunny: ["lopunny-mega"],
   garchomp: ["garchomp-mega"],
   lucario: ["lucario-mega"],
   abomasnow: ["abomasnow-mega"],
   gallade: ["gallade-mega"],
   audino: ["audino-mega"],
-  diancie: ["diancie-mega"]
+  diancie: ["diancie-mega"],
+  kyogre: ["kyogre-primal"],
+  groudon: ["groudon-primal"],
+  greninja: ["greninja-ash"],
+  kyogre: ["kyogre-primal"],
+  groudon: ["groudon-primal"],
+  dialga: ["dialga-origin"],
+  palkia: ["palkia-origin"],
+  giratina: ["giratina-origin"],
+  landorus: ["landorus-therian"],
+  thundurus: ["thundurus-therian"],
+  tornadus: ["tornadus-therian"],
+  enamorus: ["enamorus-therian"]
 };
 
 function capitalize(text){
@@ -71,7 +81,7 @@ async function carregarPokemon(){
     pokemonDetail.innerHTML = "<p class='loading'>Erro</p>";
     return;
   }
-
+/*declaracao das variaveis de mega/shiny*/
   try{
     const resposta = await fetch(`https://pokeapi.co/api/v2/pokemon/${nome}`);
     const pokemon = await resposta.json();
@@ -122,7 +132,7 @@ async function carregarPokemon(){
         ${favoritos.includes(pokemon.id) ? "⭐" : "☆"} <br> Favoritar
       `;
     });
-
+/*função para os botões*/
     const pokemonSprite = document.getElementById("pokemonSprite");
     const btnMega = document.querySelector(".megaEvolução");
     btnMega.textContent = "M";
@@ -132,7 +142,7 @@ async function carregarPokemon(){
     btnForma1.textContent = "X";
     btnForma2.textContent = "Y";
     btnForma3.textContent = "✨";
-
+/*opacidade dos botões*/
     if(
   pokemon.name !== "charizard" &&
   pokemon.name !== "mewtwo"
@@ -144,7 +154,7 @@ async function carregarPokemon(){
 if(!megaForms[pokemon.name]){
   btnMega.style.opacity = "1.0";
 }
-
+/*função para ativar o shiny */
 btnForma3.addEventListener("click", () => {
   
   shinyAtivo = !shinyAtivo;
@@ -163,7 +173,7 @@ btnForma3.addEventListener("click", () => {
 
   }
 });
-
+/*função para os botões de mega evolucao*/
 btnMega.addEventListener("click", async () => {
 
   if(!megaForms[pokemon.name]){
@@ -202,7 +212,7 @@ btnMega.addEventListener("click", async () => {
   }
 
 });
-
+/*funções especificas para charizard/mewtwo*/
 btnForma1.addEventListener("click", () => {
 
   if(
