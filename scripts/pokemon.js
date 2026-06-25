@@ -48,15 +48,25 @@ const megaForms = {
   latias: ["latias-mega"],
   latios: ["latios-mega"],
   rayquaza: ["rayquaza-mega"],
-  kyogre: ["kyogre-primal"],
-  groudon: ["groudon-primal"],
   lopunny: ["lopunny-mega"],
   garchomp: ["garchomp-mega"],
   lucario: ["lucario-mega"],
   abomasnow: ["abomasnow-mega"],
   gallade: ["gallade-mega"],
   audino: ["audino-mega"],
-  diancie: ["diancie-mega"]
+  diancie: ["diancie-mega"],
+  kyogre: ["kyogre-primal"],
+  groudon: ["groudon-primal"],
+  greninja: ["greninja-ash"],
+  kyogre: ["kyogre-primal"],
+  groudon: ["groudon-primal"],
+  dialga: ["dialga-origin"],
+  palkia: ["palkia-origin"],
+  giratina: ["giratina-origin"],
+  landorus: ["landorus-therian"],
+  thundurus: ["thundurus-therian"],
+  tornadus: ["tornadus-therian"],
+  enamorus: ["enamorus-therian"]
 };
 
 function capitalize(text){
